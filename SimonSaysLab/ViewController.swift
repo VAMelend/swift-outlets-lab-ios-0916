@@ -10,6 +10,39 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    
+    @IBAction func redGuess(sender: AnyObject) {
+        print("red button pressed")
+        simonSaysGame.guessRed()
+        buttonsClicked += 1
+        gameResult()
+    }
+    
+    @IBAction func greenGuess(sender: AnyObject) {
+        print("green button pressed")
+        simonSaysGame.guessGreen()
+        buttonsClicked += 1
+        gameResult()
+    }
+    
+    @IBAction func yellowGuess(sender: AnyObject) {
+        print("yellow button pressed")
+        simonSaysGame.guessYellow()
+        buttonsClicked += 1
+        gameResult()
+        
+    }
+    
+    
+    @IBAction func blueGuess(sender: AnyObject) {
+        print("blue button pressed")
+        simonSaysGame.guessBlue()
+        buttonsClicked += 1
+        gameResult()
+    }
+    
+    
+    
     @IBOutlet weak var displayColorView: UIView!
     @IBOutlet weak var startGameButton: UIButton!
     @IBOutlet weak var winLabel: UILabel!
@@ -19,6 +52,24 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    
+    func gameResult() {
+        
+        if buttonsClicked == 5 {
+            if simonSaysGame.wonGame() {
+                winLabel.text = "You won!"
+            }
+            else {
+                
+                winLabel.text = "Nope, try again."
+                
+            }
+            
+        }
+        
+    }
+    
 }
 
 // MARK: - SimonSays Game Methods
@@ -48,3 +99,5 @@ extension ViewController {
         })
     }
 }
+
+
